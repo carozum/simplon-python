@@ -63,7 +63,7 @@ def ask_level():
 def guess_num(games, sup):
 
     guess = randint(1, sup)
-    print(guess)
+    # print(guess)
 
     num = input(f"\nEnter a number between 0 and {sup}: ")
     num, tries = check_input(num, 0, sup)
