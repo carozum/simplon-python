@@ -1,8 +1,6 @@
-"""Exercice 3 : les plus grands nombres
-Générer une liste aléatoire de 100 entiers puis en extraire les 10 plus grands. Généraliser votre algorithme en créant une fonction prenant comme paramètres la taille de la liste initiale et le nombre d’entiers à extraire.
-Contrainte : ne pas utiliser les fonctions de tri sort() ou sorted(). Vous pouvez toutefois utiliser ces fonctions dans un second temps pour vérifier vos résultats."""
 
-from random import randint
+
+from random import sample
 
 print(
     f"""*****************************
@@ -11,11 +9,11 @@ print(
     \r*****************************""")
 
 
-# **** function that
+# **** function extracts the {extract} biggest numbers
 def big_num(max, size, extract):
-    randoms = [randint(1, max) for loop in range(1, size+1)]
+    randoms = sample(range(max), size)
     print(
-        f"Here is a list of random numbers between 0 and {max} \n{randoms} ")
+        f"Here is a list of random numbers between 0 and {max} \n\n{randoms} ")
 
     for i in range(size):
         for j in range(i + 1, size):
@@ -25,4 +23,4 @@ def big_num(max, size, extract):
     print(f"\nThe {extract} biggest numbers are {randoms[-extract:]}")
 
 
-big_num(max=200, size=100, extract=15)
+big_num(max=1000, size=100, extract=10)

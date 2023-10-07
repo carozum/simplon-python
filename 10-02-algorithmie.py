@@ -308,7 +308,7 @@ def somme_chiffres_bis(nombre):
 # itératif
 def somme_n(n):
     somme = 0
-    for loop in range(11):
+    for loop in range(n+1):
         somme += loop
     return somme
 
