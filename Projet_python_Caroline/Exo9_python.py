@@ -1,4 +1,8 @@
 import pickle
+import os
+from glob import glob
+
+
 print(
     f"""*****************************
     \nEXERCICE 9 - quelques notes
@@ -52,6 +56,15 @@ def enter_notes(list_notes=[]):
     return list_notes
 
 
+def existing_pickle(directory):
+    pickle_files = glob(os.path.join(directory, '*.pickle'))
+    clean_list = []
+    for element in pickle_files:
+        clean_list.append(element[2:])
+    # https://flexiple.com/python/convert-list-to-string-python
+    print(" ".join(clean_list))
+
+
 def app():
     choice = input("""
                 \nBienvenue dans le module de saisie des notes.
@@ -62,7 +75,9 @@ def app():
                 \rQ - Voulez vous sortir ?""")
 
     if choice.upper() == "A":
-        # donner les listes disponibles
+        # continuer liste existante
+        print("The available lists are: ")
+        existing_pickle('./')
         name = input("What is the name of the list?")
         list_notes = open_list(name)
         # print(list_notes)
@@ -73,6 +88,7 @@ def app():
         pass
 
     elif choice.upper() == "B":
+        # nouvelle list
         name = input("What is the name of the new list?")
         list_notes = enter_notes()
         print(list_notes)
