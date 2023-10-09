@@ -17,12 +17,22 @@ def save_list(list_name, name):
 
 
 def open_list(name):
+    # https://pythonprogramming.net/python-pickle-module-save-objects-serialization/
     pickle_in = open(f"{name}.pickle", "rb")
     return pickle.load(pickle_in)
 
 
 def display_lists():
     pass
+
+
+def existing_pickle(directory):
+    pickle_files = glob(os.path.join(directory, '*.pickle'))
+    clean_list = []
+    for element in pickle_files:
+        clean_list.append(element[2:-7])
+    # https://flexiple.com/python/convert-list-to-string-python
+    print(" ".join(clean_list))
 
 
 def enter_notes(list_notes=[]):
@@ -56,15 +66,6 @@ def enter_notes(list_notes=[]):
     return list_notes
 
 
-def existing_pickle(directory):
-    pickle_files = glob(os.path.join(directory, '*.pickle'))
-    clean_list = []
-    for element in pickle_files:
-        clean_list.append(element[2:])
-    # https://flexiple.com/python/convert-list-to-string-python
-    print(" ".join(clean_list))
-
-
 def app():
     choice = input("""
                 \nBienvenue dans le module de saisie des notes.
@@ -72,7 +73,8 @@ def app():
                 \rA - Continuer une liste existante?
                 \rB - Voulez vous créer une nouvelle liste?
                 \rC - Voulez vous écraser une liste existante?
-                \rQ - Voulez vous sortir ?""")
+                \rQ - Voulez vous sortir ?
+                \rC'est à vous: """)
 
     if choice.upper() == "A":
         # continuer liste existante
@@ -91,17 +93,20 @@ def app():
         # nouvelle list
         name = input("What is the name of the new list?")
         list_notes = enter_notes()
-        print(list_notes)
+        # print(list_notes)
         save_list(list_notes, name)
 
     elif choice.upper() == "C":
-        pass
+        print("The available lists are: ")
+        existing_pickle('./')
+        name = input("What is the name of the list?")
+        list_notes = enter_notes()
+        # print(list_notes)
+        save_list(list_notes, name)
+
     elif choice.upper() == 'Q':
         print("See you soon")
-        return ''
-
-
-# https://pythonprogramming.net/python-pickle-module-save-objects-serialization/
+        return
 
 
 if __name__ == "__main__":
