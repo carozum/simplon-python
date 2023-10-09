@@ -1,5 +1,8 @@
-"""Exercice 7 : manipulations de dictionnaires
-Écrire une fonction qui échange les clés et les valeurs d'un dictionnaire (ce qui permettra par exemple de transformer un dictionnaire anglais/français en un dictionnaire français/anglais). On suppose qu’il n’y a pas de valeurs en double pour simplifier."""
+print(
+    f"""*****************************
+    \nEXERCICE 7 - Manipulation de dictionnaires
+    \r
+    \r*****************************""")
 
 
 def exchange_dict(dico):

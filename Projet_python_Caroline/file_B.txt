@@ -1,0 +1,7 @@
+ligne 1 B
+ligne 2 B
+ligne 3 B
+ligne 4 B
+ligne 5 B 
+ligne 6 B 
+ligne 7 B
